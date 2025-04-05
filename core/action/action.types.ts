@@ -1,0 +1,10 @@
+export enum ActionType {
+  JUMP = "JUMP",
+  DOUBLE_JUMP = "DOUBLE_JUMP",
+  DASH = "DASH",
+  DASH_BOOST = "DASH_BOOST",
+  LIGHT_ATTACK = "LIGHT_ATTACK",
+  HEAVY_ATTACK = "HEAVY_ATTACK",
+  HEAL = "HEAL",
+  XP_BOOST = "XP_BOOST",
+}
