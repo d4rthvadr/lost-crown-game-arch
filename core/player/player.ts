@@ -33,13 +33,28 @@ export class Player {
     action: Action,
     { buffs = [], debuffs = [] }: { buffs: Buff[]; debuffs: Debuff[] }
   ): void {
-    const ctx = {
+    let ctx = {
       playerStats: this.getModifiedStats(),
       buffs,
       debuffs,
     };
 
+    const additionalCtx = this.pluginManager?.applyBeforeAction(
+      action,
+      ctx.playerStats
+    );
+
+    ctx = {
+      ...ctx,
+      playerStats: {
+        ...ctx.playerStats,
+        ...additionalCtx,
+      },
+    };
+
     action.execute(ctx);
+
+    this.pluginManager?.applyAfterAction(action, ctx.playerStats);
   }
 
   dispatchEvent(event: GameEvent) {
