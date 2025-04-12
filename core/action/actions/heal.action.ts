@@ -12,4 +12,13 @@ export class HealAction implements Action {
       },
     };
   }
+  undo(ctx: ActionContext): ActionContext {
+    return {
+      ...ctx,
+      playerStats: {
+        ...ctx.playerStats,
+        health: ctx.playerStats.health - 20,
+      },
+    };
+  }
 }

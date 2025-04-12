@@ -15,4 +15,16 @@ export class DashAction implements Action {
       },
     };
   }
+  undo(ctx: ActionContext): ActionContext {
+    // Implementation of the undo action
+    console.log("Dash action undone");
+
+    return {
+      ...ctx,
+      playerStats: {
+        ...ctx.playerStats,
+        stamina: ctx.playerStats.stamina + 10, // Example of reverting player stats
+      },
+    };
+  }
 }

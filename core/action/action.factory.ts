@@ -1,3 +1,5 @@
+import { Action } from "./action.context";
+import { ActionType } from "./action.types";
 import { DashAction } from "./actions/dash.action";
 import { HealAction } from "./actions/heal.action";
 import { HeavyAttackAction } from "./actions/heavy-attack.action";
@@ -5,17 +7,17 @@ import { JumpAction } from "./actions/jump.action";
 import { LightAttackAction } from "./actions/light-attack.action";
 
 export class ActionFactory {
-  static createAction(actionType: string) {
+  static createAction(actionType: ActionType): Action {
     switch (actionType) {
-      case "JUMP":
+      case ActionType.JUMP:
         return new JumpAction();
-      case "DASH":
+      case ActionType.DASH:
         return new DashAction();
-      case "LIGHT_ATTACK":
+      case ActionType.LIGHT_ATTACK:
         return new LightAttackAction();
-      case "HEAVY_ATTACK":
+      case ActionType.HEAVY_ATTACK:
         return new HeavyAttackAction();
-      case "HEAL":
+      case ActionType.HEAL:
         return new HealAction();
       default:
         throw new Error(`Unknown action type: ${actionType}`);

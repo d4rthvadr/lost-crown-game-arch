@@ -12,4 +12,13 @@ export class JumpAction implements Action {
       },
     };
   }
+  undo(ctx: ActionContext): ActionContext {
+    return {
+      ...ctx,
+      playerStats: {
+        ...ctx.playerStats,
+        stamina: ctx.playerStats.stamina + 5,
+      },
+    };
+  }
 }

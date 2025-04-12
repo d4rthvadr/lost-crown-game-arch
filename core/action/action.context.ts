@@ -12,4 +12,5 @@ export interface ActionContext {
 export interface Action {
   name: ActionType;
   execute(ctx: ActionContext): ActionContext;
+  undo?(ctx: ActionContext): ActionContext;
 }
